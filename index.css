@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  background: #F3FAF2;
+  font: 30px sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 100vh;
+  grid-template-columns: 1fr 300px;
+}

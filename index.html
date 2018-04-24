@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/siimple@3.0.0/dist/siimple.min.css">
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+  <div class="container">
+
+    <div class="game-canvas">
+      <script type="text/goml" id="main">
+        <goml width="fit" height="fit">
+          <scene>
+            <camera class="camera" position="0,0,40" rotation="x(30d)">
+              <camera.components>
+                <MouseCameraControl></MouseCameraControl>
+              </camera.components>
+            </camera>
+            <geometry name="cylinder" type="cylinder" />
+
+            <material id="mat1" type="basic-shading" albedo="#eeeeeeff" />
+            <material id="mat2" type="basic-shading" albedo="#9DCEFEff" />
+            <material id="mat3" type="basic-shading" albedo="#D13F1Bff" />
+            <material id="mat4" type="basic-shading" albedo="#FCF2A4ff" />
+            <material id="mat5" type="basic-shading" albedo="#222222ff" />
+
+            <light type="directional" rotation="-30d,30d,0d" color="white" intensity="4.0" />
+
+            <!-- うしろのかべ -->
+            <rigid-cube position="0,1.1,-4.5" scale="8, 3.1, 0.5" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+
+            <!-- よこのかべ -->
+            <rigid-cube position="-8.5,0.2,0" scale="0.5, 4, 5" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+            <rigid-cube position="+8.5,0.2,0" scale="0.5, 4, 5" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+
+            <!-- うすいゆか -->
+            <rigid-cube position="0,-4,3" scale="9, 0.2, 8" move="false" transparent="false" albedo="#666666FF" emission="#000000" />
+
+            <!-- うごくゆか -->
+            <rigid-cube id="floor" position="0,-3,-1" scale="8, 1, 6" move="true" transparent="true" albedo="#F5FBFC55" emission="#000000">
+              <rigid-cube.components>
+                <Wave amplitude="3"/>
+              </rigid-cube.components>
+            </rigid-cube>
+
+
+
+            <!-- ゴール -->
+            <rigid-cube position="+1.7,-8.2,10" scale="0.2, 4, 9" move="false" transparent="false" albedo="#B8E096FF" emission="#000000"/>
+            <rigid-cube position="-1.7,-8.2,10" scale="0.2, 4, 9" move="false" transparent="false" albedo="#B8E096FF" emission="#000000"/>
+
+            <!-- したのわく -->
+            <rigid-cube position="+8.8,-8.2,10" scale="0.2, 4, 9" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+            <rigid-cube position="-8.8,-8.2,10" scale="0.2, 4, 9" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+
+            <!-- それいがいのわく -->
+            <rigid-cube position="0,-8.2,10" scale="9, 4, 0.2" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+            <rigid-cube position="0,-8.2,19.2" scale="9, 4, 0.2" move="false" transparent="false" albedo="#666666FF" emission="#000000"/>
+
+          </scene>
+        </goml>
+      </script>
+    </div>
+
+    <div class="game-ui">
+      <div class="score">
+        300z
+      </div>
+      <div>
+        <button class="siimple-btn siimple-btn--grey coin1">
+          use 30z
+        </button>
+        <button class="siimple-btn siimple-btn--blue coin2">
+          use 300z
+        </button>
+        <button class="siimple-btn siimple-btn--red coin3">
+          use 3,000z
+        </button>
+        <button class="siimple-btn siimple-btn--yellow coin4">
+          use 30,000z
+        </button>
+        <button class="siimple-btn siimple-btn--navy coin5">
+          use 300,000z
+        </button>
+      </div>
+      <hr>
+      <div>
+        <button class="siimple-btn siimple-btn--orange buy-coin1">
+          buy 300z by ¥1
+        </button>
+        <button class="siimple-btn siimple-btn--orange buy-coin2">
+          buy 3,000z by ¥10
+        </button>
+        <button class="siimple-btn siimple-btn--orange buy-coin3">
+          buy 30,000z by ¥100
+        </button>
+        <button class="siimple-btn siimple-btn--orange buy-coin4">
+          buy 300,000z by ¥1,000
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/umbrellajs@2.10.1/umbrella.min.js"></script>
+
+  <!-- grimoire-preset-basic.js v1.11.20 -->
+  <script src="https://unpkg.com/grimoirejs-preset-basic@1.11.20/register/grimoire-preset-basic.js"></script>
+  <script src="https://unpkg.com/grimoirejs-forward-shading@1.10.2/register/grimoire-forward-shading.js"></script>
+
+  <!-- OimoPhysics.js v1.1.2 -->
+  <script src="https://cdn.rawgit.com/saharan/OimoPhysics/262eb59f/bin/js/OimoPhysics.js"></script>
+  <!-- <script src="https://cdn.rawgit.com/saharan/OimoPhysics/262eb59f/bin/js/OimoPhysics.min.js"></script> -->
+
+  <!-- stats.js r17 -->
+  <script src="https://cdn.rawgit.com/mrdoob/stats.js/28632bd8/build/stats.js"></script>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
+
